@@ -549,8 +549,7 @@ public static class Blended
                 var child = a.childrenFolders[i];
                 if (child.Name == item.Name)
                 {
-                    if (child.Name == "3" || item.Name == "3")
-                    { System.Console.WriteLine(); }
+
                     x = false;
                     var m = item;
                     m = Mezclar(item, child);
@@ -593,9 +592,9 @@ public static class Blended
 
     {
         var temp = new Folder(child.Name);
-        temp.addFather(child.Father);
+        // temp.addFather(child.Father); quitar por referencia 
         foreach (var item in child.files) { temp.CreateFile(item.Name, item.Size); }
-        foreach (var item in child.childrenFolders) { var x = AddFolders(item); temp.childrenFolders.Add(x); }
+        foreach (var item in child.childrenFolders) { var x = AddFolders(item); temp.AddChild(x); }
         return temp;
     }
 
